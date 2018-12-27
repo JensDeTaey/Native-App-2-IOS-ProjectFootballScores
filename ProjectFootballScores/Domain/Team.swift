@@ -32,7 +32,7 @@ struct Team : Codable
         case founded
         case crestUrl
         case clubColors
-        //case players = "squad"
+        case players = "squad"
         //case area
     }
     
