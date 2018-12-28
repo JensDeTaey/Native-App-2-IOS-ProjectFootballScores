@@ -65,7 +65,6 @@ class TeamsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectTeam"{
             if let des = segue.destination as? TeamInfoViewController{
-                //let team = teamTableView.indexPathForSelectedRow?.row
                 des.team = sender as? Team
             }
         }

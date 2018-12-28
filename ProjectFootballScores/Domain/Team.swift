@@ -7,20 +7,33 @@
 //
 
 import Foundation
+import RealmSwift
+import Realm
 
-struct Team : Codable
+class Team :  Object, Codable
 {
-    var id: Int
-    var name: String
+    @objc dynamic var id: Int = 0
+    @objc dynamic var name: String = ""
     //var area: Area
-    var address : String?
-    var phone : String?
-    var website : String?
-    var email : String?
-    var founded : Int?
-    var crestUrl : URL?
-    var clubColors : String?
+    @objc dynamic var address : String?
+    @objc dynamic var phone : String?
+    @objc dynamic var website : String?
+    @objc dynamic var email : String?
+    //@objc dynamic var founded : Int?
+    @objc dynamic var crestUrl : URL?
+    @objc dynamic var clubColors : String?
     var players : [Player]?
+    
+    // Initialisers needed for realm
+    required init() {
+        super.init()
+    }
+    required init(value: Any, schema: RLMSchema) {
+        super.init(value: value, schema: schema)
+    }
+    required init(realm: RLMRealm, schema: RLMObjectSchema) {
+        super.init(realm: realm, schema: schema)
+    }
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -29,14 +42,17 @@ struct Team : Codable
         case phone
         case website
         case email
-        case founded
+        //case founded
         case crestUrl
         case clubColors
         case players = "squad"
         //case area
     }
+
+
     
-    init(id: Int, name: String,area: Area, address: String, phone: String, website: String, email: String, founded: Int,crestUrl:URL, clubColors: String, players : [Player]) {
+  /*convenience init(id: Int, name: String,area: Area, address: String, phone: String, website: String, email: String, founded: Int,crestUrl:URL, clubColors: String, players : [Player]) {
+        self.init()
         self.id = id
         self.name = name
         //self.area = area
@@ -48,21 +64,23 @@ struct Team : Codable
         self.crestUrl = crestUrl
         self.clubColors = clubColors
         self.players = players
-    }
-    init(from decoder: Decoder) throws {
+    }*/
+     required init(from decoder: Decoder) throws {
+       super.init()
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try valueContainer.decode(Int.self, forKey: CodingKeys.id)
         self.name = try valueContainer.decode(String.self, forKey: CodingKeys.name)
         //self.area = try valueContainer.decode(Area.self, forKey: CodingKeys.area)
-        self.address = try? valueContainer.decode(String.self, forKey: CodingKeys.address)
-        self.phone = try? valueContainer.decode(String.self, forKey: CodingKeys.phone)
-        self.website = try? valueContainer.decode(String.self, forKey: CodingKeys.website)
-        self.email = try? valueContainer.decode(String.self, forKey: CodingKeys.email)
-        self.founded = try? valueContainer.decode(Int.self, forKey: CodingKeys.founded)
-        self.crestUrl = try? valueContainer.decode(URL.self, forKey: CodingKeys.crestUrl)
-        self.clubColors = try? valueContainer.decode(String.self, forKey: CodingKeys.clubColors)
-        self.players = try? valueContainer.decode([Player].self, forKey: CodingKeys.players)
+        self.address = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.address)
+        self.phone = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.phone)
+        self.website = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.website)
+        self.email = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.email)
+        //self.founded = try valueContainer.decodeIfPresent(Int.self, forKey: CodingKeys.founded)
+        self.crestUrl = try valueContainer.decodeIfPresent(URL.self, forKey: CodingKeys.crestUrl)
+        self.clubColors = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.clubColors)
+        self.players = try valueContainer.decodeIfPresent([Player].self, forKey: CodingKeys.players)
     }
+    
 }
 
 struct Teams  : Codable{

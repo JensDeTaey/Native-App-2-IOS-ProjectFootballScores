@@ -489,15 +489,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TeamCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TeamCell" id="t1u-EK-zSE" customClass="TeamCell" customModule="ProjectFootballScores" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TeamCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamCell" id="t1u-EK-zSE" customClass="TeamCell" customModule="ProjectFootballScores" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t1u-EK-zSE" id="Ih4-iN-bJc">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="teamNameLabel" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0T-l0-dwI">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="60.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="lfa-hL-G5c"/>
                                             </constraints>
@@ -505,6 +505,11 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7S-q6-pv6">
+                                            <rect key="frame" x="319" y="13" width="37" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" backgroundImage="icons8-soccer-filled-50"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="v0T-l0-dwI" secondAttribute="bottom" id="1Pe-1s-7rg"/>
