@@ -19,8 +19,8 @@ class Team :  Object, Codable
     @objc dynamic var phone : String?
     @objc dynamic var website : String?
     @objc dynamic var email : String?
-    //@objc dynamic var founded : Int?
-    @objc dynamic var crestUrl : URL?
+    var founded : RealmOptional<Int> = RealmOptional<Int>()
+    var crestUrl : URL?
     @objc dynamic var clubColors : String?
     var players : [Player]?
     
