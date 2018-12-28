@@ -52,6 +52,7 @@ class CompetitionsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = competitionTableView.dequeueReusableCell(withIdentifier: "competitionCell", for: indexPath) as! CompetitionCell
         cell.competiton = competitions[indexPath.row]
+        
         //cell.textLabel?.text = competitions[indexPath.row].name
         return cell
     }

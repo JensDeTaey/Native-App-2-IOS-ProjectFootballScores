@@ -7,5 +7,5 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <SVGKit/SVGKit.h>
-#import <SVGKit/SVGKImage.h>
+//#import <SVGKit/SVGKit.h>
+//#import <SVGKit/SVGKImage.h>

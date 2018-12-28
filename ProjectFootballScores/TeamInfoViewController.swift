@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVGKit
+import RealmSwift
 
 class TeamInfoViewController: UIViewController {
 
@@ -54,12 +56,12 @@ class TeamInfoViewController: UIViewController {
     }
     */
 
-    @IBAction func PlayerPushed(_ sender: UIButton) {
+    /*@IBAction func PlayerPushed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "SelectPlayers", sender: team?.id)
-    }
+    }*/
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SelectPlayers"{
+        if segue.identifier == "SelectAllPlayers"{
             if let des = segue.destination as? PlayersTableViewController{
                 //let team = teamTableView.indexPathForSelectedRow?.row
                 des.teamId = sender as? Int
@@ -67,6 +69,11 @@ class TeamInfoViewController: UIViewController {
         }
         
         
-        
+     
+     
+    }
+    
+    @IBAction func SeeAllPlayersPushed(_ sender: Any) {
+        self.performSegue(withIdentifier: "SelectAllPlayers", sender: team?.id)
     }
 }

@@ -20,7 +20,7 @@ struct Team : Codable
     var founded : Int?
     var crestUrl : URL?
     var clubColors : String?
-    var players : Players?
+    var players : [Player]?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -36,7 +36,7 @@ struct Team : Codable
         //case area
     }
     
-    init(id: Int, name: String,area: Area, address: String, phone: String, website: String, email: String, founded: Int,crestUrl:URL, clubColors: String, players : Players) {
+    init(id: Int, name: String,area: Area, address: String, phone: String, website: String, email: String, founded: Int,crestUrl:URL, clubColors: String, players : [Player]) {
         self.id = id
         self.name = name
         //self.area = area
@@ -47,7 +47,7 @@ struct Team : Codable
         self.founded = founded
         self.crestUrl = crestUrl
         self.clubColors = clubColors
-        //self.players = players
+        self.players = players
     }
     init(from decoder: Decoder) throws {
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
@@ -61,7 +61,7 @@ struct Team : Codable
         self.founded = try? valueContainer.decode(Int.self, forKey: CodingKeys.founded)
         self.crestUrl = try? valueContainer.decode(URL.self, forKey: CodingKeys.crestUrl)
         self.clubColors = try? valueContainer.decode(String.self, forKey: CodingKeys.clubColors)
-        //self.players = try? valueContainer.decode(Players.self, forKey: CodingKeys.players)
+        self.players = try? valueContainer.decode([Player].self, forKey: CodingKeys.players)
     }
 }
 

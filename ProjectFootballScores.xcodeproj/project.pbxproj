@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4613DF10054FA0D6AB7676CC /* Pods_ProjectFootballScores.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5DF2BB8DE9B5E9F3D9F018 /* Pods_ProjectFootballScores.framework */; };
 		4F0C907221D03AFA00BF5C08 /* bridging-header.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C907121D03AFA00BF5C08 /* bridging-header.m */; };
 		4F0C908821D3ABDA00BF5C08 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C908721D3ABDA00BF5C08 /* Player.swift */; };
 		4F0C908A21D3AC5000BF5C08 /* ApiConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C908921D3AC5000BF5C08 /* ApiConnectionController.swift */; };
 		4F0C908C21D3CF0B00BF5C08 /* PlayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C908B21D3CF0B00BF5C08 /* PlayersTableViewController.swift */; };
-		4F0C909A21D50C8600BF5C08 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0C909921D50C8500BF5C08 /* CocoaLumberjack.framework */; };
-		4F0C909B21D50C8600BF5C08 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0C909921D50C8500BF5C08 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4F0C909D21D50CD200BF5C08 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0C909C21D50CD200BF5C08 /* SVGKit.framework */; };
-		4F0C909E21D50CD200BF5C08 /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0C909C21D50CD200BF5C08 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4F7C195B21D5643D0057CD23 /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7C195A21D5643D0057CD23 /* PlayerTableViewCell.swift */; };
 		4F8007BE21CD6E7700F0B259 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8007BD21CD6E7700F0B259 /* TeamCell.swift */; };
 		4F8F64CD21CFBDC8003F014B /* TeamInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F64CC21CFBDC8003F014B /* TeamInfoViewController.swift */; };
 		4FB5DFFF21B3255000BF3E3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB5DFFE21B3255000BF3E3B /* AppDelegate.swift */; };
@@ -35,8 +33,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4F0C909E21D50CD200BF5C08 /* SVGKit.framework in Embed Frameworks */,
-				4F0C909B21D50C8600BF5C08 /* CocoaLumberjack.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,14 +40,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2AA4802B3E87E38F9055CEC6 /* Pods-ProjectFootballScores.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectFootballScores.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectFootballScores/Pods-ProjectFootballScores.debug.xcconfig"; sourceTree = "<group>"; };
 		4F0C907021D03AF900BF5C08 /* ProjectFootballScores-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjectFootballScores-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F0C907121D03AFA00BF5C08 /* bridging-header.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "bridging-header.m"; sourceTree = "<group>"; };
 		4F0C908721D3ABDA00BF5C08 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4F0C908921D3AC5000BF5C08 /* ApiConnectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConnectionController.swift; sourceTree = "<group>"; };
 		4F0C908B21D3CF0B00BF5C08 /* PlayersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersTableViewController.swift; sourceTree = "<group>"; };
-		4F0C909921D50C8500BF5C08 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../Downloads/SVGKit-3.x/3rd-party-frameworks/CocoaLumberjack-2.2.0/iOS/CocoaLumberjack.framework"; sourceTree = "<group>"; };
-		4F0C909C21D50CD200BF5C08 /* SVGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVGKit.framework; sourceTree = "<group>"; };
-		4F0C909F21D50DAB00BF5C08 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../Downloads/SVGKit-3.x/3rd-party-frameworks/CocoaLumberjack-2.2.0/iOS/CocoaLumberjack.framework"; sourceTree = "<group>"; };
+		4F7C195A21D5643D0057CD23 /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
 		4F8007BD21CD6E7700F0B259 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
 		4F8F64CC21CFBDC8003F014B /* TeamInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfoViewController.swift; sourceTree = "<group>"; };
 		4FB5DFFB21B3255000BF3E3B /* ProjectFootballScores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectFootballScores.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +60,8 @@
 		4FB5E01621B4729700BF3E3B /* CompetitionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionCell.swift; sourceTree = "<group>"; };
 		4FB5E01921CBEF9A00BF3E3B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		4FB5E01B21CBF07F00BF3E3B /* TeamsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsTableViewController.swift; sourceTree = "<group>"; };
+		5A5DF2BB8DE9B5E9F3D9F018 /* Pods_ProjectFootballScores.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectFootballScores.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF695286EC7A0C17FB97808F /* Pods-ProjectFootballScores.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectFootballScores.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectFootballScores/Pods-ProjectFootballScores.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,19 +69,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F0C909D21D50CD200BF5C08 /* SVGKit.framework in Frameworks */,
-				4F0C909A21D50C8600BF5C08 /* CocoaLumberjack.framework in Frameworks */,
+				4613DF10054FA0D6AB7676CC /* Pods_ProjectFootballScores.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4F0C906C21D0381E00BF5C08 /* Frameworks */ = {
+		3A0548907FE97D9E3F96F213 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4F0C909C21D50CD200BF5C08 /* SVGKit.framework */,
-				4F0C909F21D50DAB00BF5C08 /* CocoaLumberjack.framework */,
+				5A5DF2BB8DE9B5E9F3D9F018 /* Pods_ProjectFootballScores.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -100,10 +95,10 @@
 		4FB5DFF221B3255000BF3E3B = {
 			isa = PBXGroup;
 			children = (
-				4F0C909921D50C8500BF5C08 /* CocoaLumberjack.framework */,
 				4FB5DFFD21B3255000BF3E3B /* ProjectFootballScores */,
 				4FB5DFFC21B3255000BF3E3B /* Products */,
-				4F0C906C21D0381E00BF5C08 /* Frameworks */,
+				FF4A268ECF04ECD273232F22 /* Pods */,
+				3A0548907FE97D9E3F96F213 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,6 +128,7 @@
 				4F0C907121D03AFA00BF5C08 /* bridging-header.m */,
 				4F0C907021D03AF900BF5C08 /* ProjectFootballScores-Bridging-Header.h */,
 				4F0C908B21D3CF0B00BF5C08 /* PlayersTableViewController.swift */,
+				4F7C195A21D5643D0057CD23 /* PlayerTableViewCell.swift */,
 			);
 			path = ProjectFootballScores;
 			sourceTree = "<group>";
@@ -147,6 +143,15 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
+		FF4A268ECF04ECD273232F22 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2AA4802B3E87E38F9055CEC6 /* Pods-ProjectFootballScores.debug.xcconfig */,
+				DF695286EC7A0C17FB97808F /* Pods-ProjectFootballScores.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -154,10 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4FB5E00D21B3255C00BF3E3B /* Build configuration list for PBXNativeTarget "ProjectFootballScores" */;
 			buildPhases = (
+				88FB57CD6E9D89DB8E1939C3 /* [CP] Check Pods Manifest.lock */,
 				4FB5DFF721B3255000BF3E3B /* Sources */,
 				4FB5DFF821B3255000BF3E3B /* Frameworks */,
 				4FB5DFF921B3255000BF3E3B /* Resources */,
 				4F0C907821D042AD00BF5C08 /* Embed Frameworks */,
+				CB7B0BF0558E1556CBD56494 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,6 +222,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		88FB57CD6E9D89DB8E1939C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProjectFootballScores-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB7B0BF0558E1556CBD56494 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ProjectFootballScores/Pods-ProjectFootballScores-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProjectFootballScores/Pods-ProjectFootballScores-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4FB5DFF721B3255000BF3E3B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -226,6 +286,7 @@
 				4FB5E01C21CBF07F00BF3E3B /* TeamsTableViewController.swift in Sources */,
 				4F0C907221D03AFA00BF5C08 /* bridging-header.m in Sources */,
 				4F0C908A21D3AC5000BF5C08 /* ApiConnectionController.swift in Sources */,
+				4F7C195B21D5643D0057CD23 /* PlayerTableViewCell.swift in Sources */,
 				4FB5E01521B4677C00BF3E3B /* CompetitionsTableViewController.swift in Sources */,
 				4FB5E01721B4729700BF3E3B /* CompetitionCell.swift in Sources */,
 				4F0C908C21D3CF0B00BF5C08 /* PlayersTableViewController.swift in Sources */,
@@ -375,14 +436,17 @@
 		};
 		4FB5E00E21B3255C00BF3E3B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AA4802B3E87E38F9055CEC6 /* Pods-ProjectFootballScores.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 877NG86455;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Realm\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RealmSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVGKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CocoaLumberjack\"",
 				);
 				INFOPLIST_FILE = ProjectFootballScores/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -402,6 +466,7 @@
 		};
 		4FB5E00F21B3255C00BF3E3B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF695286EC7A0C17FB97808F /* Pods-ProjectFootballScores.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

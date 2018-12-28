@@ -50,6 +50,7 @@ class TeamsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = teamTableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
         cell.team = teams[indexPath.row]
+        
         //cell.textLabel?.text = teams[indexPath.row].name
         return cell
     }

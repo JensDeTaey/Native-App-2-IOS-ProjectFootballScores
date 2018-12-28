@@ -17,4 +17,5 @@ class CompetitionCell : UITableViewCell {
             //nameLabel.text = project.name;
         }
     }
+    
 }

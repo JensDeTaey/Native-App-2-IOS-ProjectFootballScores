@@ -19,23 +19,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="competitionCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="competitionCell" id="WfK-ih-awW" customClass="CompetitionCell" customModule="ProjectFootballScores" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="competitionCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="competitionCell" id="WfK-ih-awW" customClass="CompetitionCell" customModule="ProjectFootballScores" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WfK-ih-awW" id="ntc-ub-Nur">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uN0-4E-CJn">
-                                            <rect key="frame" x="166" y="11" width="42" height="32"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uN0-4E-CJn">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="60.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="vhl-wm-bLu"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="uN0-4E-CJn" firstAttribute="leading" secondItem="ntc-ub-Nur" secondAttribute="leading" id="5tt-n2-Lmx"/>
+                                        <constraint firstItem="uN0-4E-CJn" firstAttribute="top" secondItem="ntc-ub-Nur" secondAttribute="top" id="6D2-tq-89D"/>
+                                        <constraint firstAttribute="bottom" secondItem="uN0-4E-CJn" secondAttribute="bottom" id="Jqq-wt-Nb5"/>
                                         <constraint firstItem="uN0-4E-CJn" firstAttribute="centerX" secondItem="ntc-ub-Nur" secondAttribute="centerX" id="Qj5-WS-3VM"/>
                                         <constraint firstItem="uN0-4E-CJn" firstAttribute="centerY" secondItem="ntc-ub-Nur" secondAttribute="centerY" id="Wmj-qf-qbD"/>
+                                        <constraint firstItem="uN0-4E-CJn" firstAttribute="centerX" secondItem="ntc-ub-Nur" secondAttribute="centerX" id="dd4-bn-sOe"/>
+                                        <constraint firstItem="uN0-4E-CJn" firstAttribute="centerY" secondItem="ntc-ub-Nur" secondAttribute="centerY" id="obd-kn-ATy"/>
+                                        <constraint firstAttribute="trailing" secondItem="uN0-4E-CJn" secondAttribute="trailing" id="rI7-KK-tQF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -284,8 +293,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
                                                         <state key="normal" title="See Players"/>
                                                         <connections>
-                                                            <action selector="PlayerPushed:" destination="Vsd-p2-3Y6" eventType="touchUpInside" id="2Sc-OD-0Nr"/>
-                                                            <segue destination="YQe-PH-hta" kind="push" identifier="SelectPlayers" id="ZcF-mv-BKt"/>
+                                                            <action selector="SeeAllPlayersPushed:" destination="Vsd-p2-3Y6" eventType="touchUpInside" id="pe2-Tg-Ynt"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -327,6 +335,7 @@
                         <outlet property="TeamNameLabel" destination="1C8-Ez-V2o" id="kz3-RW-Xjx"/>
                         <outlet property="TeamPhoneLabel" destination="Sgu-or-h3y" id="iw1-nL-ZxF"/>
                         <outlet property="TeamWebsiteLabel" destination="9Jr-Yd-aDS" id="bPL-ym-ORe"/>
+                        <segue destination="YQe-PH-hta" kind="push" identifier="SelectAllPlayers" id="uxX-5P-FdX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eiq-A9-sTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -342,7 +351,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Lm8-wS-GS5">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" id="Lm8-wS-GS5" customClass="PlayerTableViewCell" customModule="ProjectFootballScores" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lm8-wS-GS5" id="stG-iP-LJa">
@@ -350,7 +359,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMl-vU-4hN">
-                                            <rect key="frame" x="16" y="11" width="42" height="21"/>
+                                            <rect key="frame" x="16" y="11" width="274" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsC-qG-mu8">
+                                            <rect key="frame" x="196" y="12" width="163" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -358,6 +374,10 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="PlayerNameLabel" destination="YMl-vU-4hN" id="QjG-qy-Gq7"/>
+                                    <outlet property="PlayerNationalityLabel" destination="fsC-qG-mu8" id="INJ-vM-Eof"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -372,7 +392,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Kq-j7-Rrl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4140" y="213"/>
+            <point key="canvasLocation" x="4140" y="212.74362818590706"/>
         </scene>
         <!--All Competitions-->
         <scene sceneID="oVc-Ve-pxx">
@@ -421,11 +441,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="competitionCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="competitionCell" id="4k1-Wp-Gl9" customClass="CompetitionCell" customModule="ProjectFootballScores" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="competitionCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="competitionCell" id="4k1-Wp-Gl9" customClass="CompetitionCell" customModule="ProjectFootballScores" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4k1-Wp-Gl9" id="Fgx-oQ-L8x">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBB-uy-JAL">
@@ -469,23 +489,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TeamCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamCell" id="t1u-EK-zSE" customClass="TeamCell" customModule="ProjectFootballScores" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TeamCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TeamCell" id="t1u-EK-zSE" customClass="TeamCell" customModule="ProjectFootballScores" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t1u-EK-zSE" id="Ih4-iN-bJc">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="teamNameLabel" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0T-l0-dwI">
-                                            <rect key="frame" x="166.5" y="11.5" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="teamNameLabel" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0T-l0-dwI">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="60.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="lfa-hL-G5c"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="v0T-l0-dwI" firstAttribute="centerY" secondItem="Ih4-iN-bJc" secondAttribute="centerY" id="GC7-u4-Npn"/>
-                                        <constraint firstItem="v0T-l0-dwI" firstAttribute="centerX" secondItem="Ih4-iN-bJc" secondAttribute="centerX" id="JwY-dA-c0I"/>
+                                        <constraint firstAttribute="bottom" secondItem="v0T-l0-dwI" secondAttribute="bottom" id="1Pe-1s-7rg"/>
+                                        <constraint firstItem="v0T-l0-dwI" firstAttribute="top" secondItem="Ih4-iN-bJc" secondAttribute="top" id="5dC-n5-Scz"/>
+                                        <constraint firstItem="v0T-l0-dwI" firstAttribute="centerY" secondItem="Ih4-iN-bJc" secondAttribute="centerY" id="627-ce-eOE"/>
+                                        <constraint firstAttribute="trailing" secondItem="v0T-l0-dwI" secondAttribute="trailing" id="M0B-jm-GMc"/>
+                                        <constraint firstItem="v0T-l0-dwI" firstAttribute="leading" secondItem="Ih4-iN-bJc" secondAttribute="leading" id="v1p-cL-Gdp"/>
+                                        <constraint firstItem="v0T-l0-dwI" firstAttribute="centerX" secondItem="Ih4-iN-bJc" secondAttribute="centerX" id="wum-dc-yu2"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
