@@ -31,7 +31,7 @@ class TeamsTableViewController: UITableViewController {
                 }
             }
             
-            
+            teamTableView.register(TeamCell.self, forCellReuseIdentifier: "cellId")
         }
         // Do any additional setup after loading the view.
     
@@ -49,6 +49,15 @@ class TeamsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = teamTableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
+        let teamsSaved = RealmController.singletonRealm.teams
+        teams.forEach { (team : Team) in
+            teamsSaved.forEach({ (teamFav:Team) in
+                if(team.id == teamFav.id){
+                    team.isFavorite = true
+                }
+            })
+            
+        }
         cell.team = teams[indexPath.row]
         
         //cell.textLabel?.text = teams[indexPath.row].name

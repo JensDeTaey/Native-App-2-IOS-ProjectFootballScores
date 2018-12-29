@@ -22,6 +22,8 @@ class Team :  Object, Codable
     var founded : RealmOptional<Int> = RealmOptional<Int>()
     var crestUrl : URL?
     @objc dynamic var clubColors : String?
+    @objc dynamic var isFavorite : Bool = false
+    
     var players : [Player]?
     
     // Initialisers needed for realm

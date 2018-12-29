@@ -10,6 +10,9 @@ import Foundation
 import RealmSwift
 
 class RealmController{
+    
+    static let singletonRealm : RealmController = RealmController()
+    
     var teams :  Results<Team> = try!Realm().objects(Team.self)
     
     // add a team to realm
@@ -19,6 +22,7 @@ class RealmController{
             try realm.write {
                 realm.add(team)
             }
+            updateTeam()
         } catch let error as NSError {
             completion(error)
             return
@@ -33,10 +37,15 @@ class RealmController{
             try realm.write {
                 realm.delete(team)
             }
+            updateTeam()
         } catch let error as NSError {
             completion(error)
             return
         }
         completion(nil)
+    }
+    
+    func updateTeam(){
+        teams = try! Realm().objects(Team.self)
     }
 }
