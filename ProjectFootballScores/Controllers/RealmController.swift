@@ -13,21 +13,24 @@ class RealmController{
     
     static let singletonRealm : RealmController = RealmController()
     
-    var teams :  Results<Team> = try!Realm().objects(Team.self)
+    var teams :  Results<Team> = try! Realm().objects(Team.self)
     
     // add a team to realm
     func addTeam(team : Team,completion: @escaping (Error?) -> Void) {
         do {
             let realm = try Realm()
             try realm.write {
+                team.isFavorite = true
                 realm.add(team)
             }
-            updateTeam()
+            
+            
         } catch let error as NSError {
             completion(error)
             return
         }
         completion(nil)
+        
     }
     
     // delete a team from realm
@@ -35,9 +38,10 @@ class RealmController{
         do {
             let realm = try Realm()
             try realm.write {
+                teamToDelete.isFavorite = false
                 realm.delete(teamToDelete)
             }
-            updateTeam()
+            //updateTeam()
         } catch let error as NSError {
             completion(error)
             return

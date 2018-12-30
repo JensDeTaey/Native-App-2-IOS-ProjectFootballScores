@@ -37,12 +37,7 @@ class ApiConncectionController{
         let request = setHTTPHeader(url: url)
         let task = URLSession.shared.dataTask(with: request) { (data,
             response, error) in
-            print("test")
             let jsonDecoder = JSONDecoder()
-            print("test2")
-            print(data)
-            print(response)
-            print(error)
             if let data = data,
                 let teams = try? jsonDecoder.decode(Teams.self,from: data),let string = String(data: data, encoding: .utf8)
                 
@@ -63,13 +58,27 @@ class ApiConncectionController{
             response, error) in
             let jsonDecoder = JSONDecoder()
             if let data = data,
-                let team = try? jsonDecoder.decode(Team.self,from: data),let string = String(data: data, encoding: .utf8) {
-                print(string)
-                print(data)
+                let team = try? jsonDecoder.decode(Team.self,from: data){
                 completion(team)
             }
         }
-        
+        task.resume()
+    }
+    
+    // fetching all matches that are played today
+    func fetchCurrentMatches(completion: @escaping (_ matches :[Match]?)->(Void)){
+        let url = URL(string: baseUrl + "/matches")
+        let request = setHTTPHeader(url: url!)
+        let task = URLSession.shared.dataTask(with: request) { (data,
+            response, error) in
+            let jsonDecoder = JSONDecoder()
+            if let data = data,
+                let matches = try? jsonDecoder.decode(Matches.self,from: data)
+                
+            {
+                completion(matches.matches)
+            }
+        }
         task.resume()
     }
     

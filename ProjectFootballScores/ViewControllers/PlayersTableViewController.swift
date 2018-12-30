@@ -32,7 +32,6 @@ class PlayersTableViewController: UITableViewController {
                     print(team)
                     self.team = team
                     self.PlayersTableView.reloadData()
-                    print(team.players)
                     self.squad = team.players!
                     self.dividePlayers()
                     self.PlayersTableView.reloadData()

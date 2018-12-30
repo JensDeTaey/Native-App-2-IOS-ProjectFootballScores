@@ -25,17 +25,17 @@ class TeamsTableViewController: UITableViewController {
                 DispatchQueue.main.async {
                     
                     self.teams = teams
+                    print("oproeping van resetStarts")
+                    self.resetStars()
                     self.teamTableView.reloadData()
                     }
                 
                 }
             }
             
-            teamTableView.register(TeamCell.self, forCellReuseIdentifier: "cellId")
+            //teamTableView.register(TeamCell.self, forCellReuseIdentifier: "cellId")
         }
         // Do any additional setup after loading the view.
-    
-    
     
     // MARK: - Table view data source
 
@@ -49,15 +49,7 @@ class TeamsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = teamTableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
-        let teamsSaved = RealmController.singletonRealm.teams
-        teams.forEach { (team : Team) in
-            teamsSaved.forEach({ (teamFav:Team) in
-                if(team.id == teamFav.id){
-                    team.isFavorite = true
-                }
-            })
-            
-        }
+        
         cell.team = teams[indexPath.row]
         
         //cell.textLabel?.text = teams[indexPath.row].name
@@ -77,10 +69,18 @@ class TeamsTableViewController: UITableViewController {
                 des.team = sender as? Team
             }
         }
-        
-        
-        
     }
    
-
+    func resetStars(){
+        let teamsSaved = RealmController.singletonRealm.teams
+        teams.forEach { (team : Team) in
+            teamsSaved.forEach({ (teamFav:Team) in
+                if(team.id == teamFav.id){
+                    team.isFavorite = true
+                }
+            })
+            
+        }
+    }
+    
 }

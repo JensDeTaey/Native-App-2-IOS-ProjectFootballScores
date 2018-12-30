@@ -72,17 +72,17 @@ class Team :  Object, Decodable
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try valueContainer.decode(Int.self, forKey: CodingKeys.id)
         self.name = try valueContainer.decode(String.self, forKey: CodingKeys.name)
-        self.area?.name = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.area)
-        self.address = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.address)
-        self.phone = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.phone)
-        self.website = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.website)
-        self.email = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.email)
+        self.area = try? valueContainer.decode(Area.self, forKey: CodingKeys.area)
+        self.address = try? valueContainer.decode(String.self, forKey: CodingKeys.address)
+        self.phone = try? valueContainer.decode(String.self, forKey: CodingKeys.phone)
+        self.website = try? valueContainer.decode(String.self, forKey: CodingKeys.website)
+        self.email = try? valueContainer.decode(String.self, forKey: CodingKeys.email)
         
-        self.crestUrl = try valueContainer.decodeIfPresent(URL.self, forKey: CodingKeys.crestUrl)
-        self.clubColors = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.clubColors)
-        self.players = try valueContainer.decodeIfPresent([Player].self, forKey: CodingKeys.players)
+        self.crestUrl = try? valueContainer.decode(URL.self, forKey: CodingKeys.crestUrl)
+        self.clubColors = try? valueContainer.decode(String.self, forKey: CodingKeys.clubColors)
+        self.players = try? valueContainer.decode([Player].self, forKey: CodingKeys.players)
         
-        let founded = try valueContainer.decodeIfPresent(Int.self, forKey: CodingKeys.founded)
+        let founded = try? valueContainer.decode(Int.self, forKey: CodingKeys.founded)
         if let founded = founded {
             self.founded.value = founded
         }
@@ -94,6 +94,18 @@ struct Teams  : Decodable{
     let teams : [Team]
 }
 
-struct Area{
+struct Area : Decodable{
     var name: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        
+    }
+    
+     init(from decoder: Decoder) throws {
+        let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
+        self.name = try valueContainer.decode(String.self, forKey: CodingKeys.name)
+    }
+    
+    
 }

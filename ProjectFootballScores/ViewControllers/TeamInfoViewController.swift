@@ -30,6 +30,7 @@ class TeamInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         TeamNameLabel.text = team?.name
+        print(team?.area?.name)
         TeamAreaNameLabel.text = team?.area?.name
         TeamFoundedLabel.text = "\(team?.founded.value ?? 1909)"
         TeamAddress.text = team?.address ?? "Not available"
@@ -37,31 +38,19 @@ class TeamInfoViewController: UIViewController {
         TeamPhoneLabel.text = team?.phone ?? "Not available"
         TeamEmailLabel.text = team?.email ?? "Not available"
         TeamWebsiteLabel.text = team?.website ?? "Not available"
-        print(team?.crestUrl)
         if(team?.crestUrl != nil){
-            let data = try? Data(contentsOf: (team?.crestUrl)!)
+            let data = try! Data(contentsOf: (team?.crestUrl)!)
+                let anSVGImage: SVGKImage = SVGKImage(data: data)
+                TeamLogoImage.image = anSVGImage.uiImage
             
-            let anSVGImage: SVGKImage = SVGKImage(data: data)
-            TeamLogoImage.image = anSVGImage.uiImage
+        }else{
+            TeamLogoImage.isHidden = true
         }
         
         
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    /*@IBAction func PlayerPushed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "SelectPlayers", sender: team?.id)
-    }*/
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectAllPlayers"{

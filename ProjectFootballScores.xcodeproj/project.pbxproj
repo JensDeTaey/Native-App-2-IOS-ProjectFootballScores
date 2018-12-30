@@ -13,6 +13,7 @@
 		4F0C908A21D3AC5000BF5C08 /* ApiConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C908921D3AC5000BF5C08 /* ApiConnectionController.swift */; };
 		4F0C908C21D3CF0B00BF5C08 /* PlayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C908B21D3CF0B00BF5C08 /* PlayersTableViewController.swift */; };
 		4F0E108021D7ADB500BC14EC /* FavoriteTeamsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0E107F21D7ADB500BC14EC /* FavoriteTeamsTableViewController.swift */; };
+		4F0E108321D97C0B00BC14EC /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0E108221D97C0A00BC14EC /* Match.swift */; };
 		4F7C195B21D5643D0057CD23 /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7C195A21D5643D0057CD23 /* PlayerTableViewCell.swift */; };
 		4F7C195D21D64D530057CD23 /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7C195C21D64D530057CD23 /* RealmController.swift */; };
 		4F8007BE21CD6E7700F0B259 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8007BD21CD6E7700F0B259 /* TeamCell.swift */; };
@@ -49,6 +50,7 @@
 		4F0C908921D3AC5000BF5C08 /* ApiConnectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConnectionController.swift; sourceTree = "<group>"; };
 		4F0C908B21D3CF0B00BF5C08 /* PlayersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersTableViewController.swift; sourceTree = "<group>"; };
 		4F0E107F21D7ADB500BC14EC /* FavoriteTeamsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTeamsTableViewController.swift; sourceTree = "<group>"; };
+		4F0E108221D97C0A00BC14EC /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		4F7C195A21D5643D0057CD23 /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
 		4F7C195C21D64D530057CD23 /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		4F8007BD21CD6E7700F0B259 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				4FB5E01221B438AF00BF3E3B /* Competition.swift */,
 				4FB5E01921CBEF9A00BF3E3B /* Team.swift */,
 				4F0C908721D3ABDA00BF5C08 /* Player.swift */,
+				4F0E108221D97C0A00BC14EC /* Match.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				4F8007BE21CD6E7700F0B259 /* TeamCell.swift in Sources */,
 				4F8F64CD21CFBDC8003F014B /* TeamInfoViewController.swift in Sources */,
 				4FB5E01A21CBEF9A00BF3E3B /* Team.swift in Sources */,
+				4F0E108321D97C0B00BC14EC /* Match.swift in Sources */,
 				4FB5E01C21CBF07F00BF3E3B /* TeamsTableViewController.swift in Sources */,
 				4F0C907221D03AFA00BF5C08 /* bridging-header.m in Sources */,
 				4F7C195D21D64D530057CD23 /* RealmController.swift in Sources */,
