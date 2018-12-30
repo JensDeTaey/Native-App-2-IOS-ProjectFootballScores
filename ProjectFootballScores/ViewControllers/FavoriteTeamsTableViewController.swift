@@ -11,6 +11,7 @@ import UIKit
 class FavoriteTeamsTableViewController: UITableViewController {
     var teams = RealmController.singletonRealm.teams
 
+    @IBOutlet var FavoriteTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         RealmController.singletonRealm.updateTeam()
@@ -37,8 +38,45 @@ class FavoriteTeamsTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView,
+                               editingStyleForRowAt indexPath: IndexPath) ->
+        UITableViewCell.EditingStyle {
+            return .delete
+    }
+    
+    //Excerpt From: Apple Education. “App Development with Swift”. Apple Inc. - Education, 2017. Apple Books. https://itunes.apple.com/be/book/app-development-with-swift/id1219117996?mt=11
  
 
+    @IBAction func editMode(_ sender: Any) {
+        self.FavoriteTableView.isEditing = !self.FavoriteTableView.isEditing
+    }
+    override func tableView(_ tableView: UITableView, commit
+        editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath:
+        IndexPath) {
+        if editingStyle == .delete {
+            let team  = teams[indexPath.row]
+            RealmController.singletonRealm.deleteTeam(teamToDelete: team){
+                error in
+                
+                if error != nil {
+                    //self.showToast(message: "failed delete")
+                    print("failed delete")
+                } else {
+                    //There were no errors
+                    
+                    team.isFavorite = false
+                    
+                    tableView.deleteRows(at: [indexPath], with: . automatic)
+                    print("succes delete")
+                }
+            
+        }
+    }
+    }
+    
+    //Excerpt From: Apple Education. “App Development with Swift”. Apple Inc. - Education, 2017. Apple Books. https://itunes.apple.com/be/book/app-development-with-swift/id1219117996?mt=11
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -85,3 +123,4 @@ class FavoriteTeamsTableViewController: UITableViewController {
     */
 
 }
+

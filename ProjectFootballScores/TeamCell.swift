@@ -49,26 +49,31 @@ class TeamCell : UITableViewCell {
             RealmController.singletonRealm.addTeam(team: team) {
                 error in
                 
-                if let error = error {
+                if error != nil {
                     //self.showToast(message: "failed add")
                     print("failed add")
                 } else {
                     //There were no errors
                     //self.showToast(message: "succes add")
+                    self.FavoriteButton.tintColor = UIColor.yellow
+                    
                     print("succes add")
                 }
                 
             }
         }else {
-            RealmController.singletonRealm.deleteTeam(team: team) {
+            print(team)
+            RealmController.singletonRealm.deleteTeam(teamToDelete: team) {
                 error in
                 
-                if let error = error {
+                if error != nil {
                     //self.showToast(message: "failed delete")
                     print("failed delete")
                 } else {
                     //There were no errors
                     //self.showToast(message: "succes delete ")
+                    
+                    self.FavoriteButton.tintColor = UIColor.gray
                     print("succes delete")
                 }
                 

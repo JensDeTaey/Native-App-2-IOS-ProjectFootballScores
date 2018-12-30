@@ -30,11 +30,14 @@ class TeamInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         TeamNameLabel.text = team?.name
-        TeamAddress.text = team?.address
-        TeamColors.text = team?.clubColors
-        TeamPhoneLabel.text = team?.phone
-        TeamEmailLabel.text = team?.email
-        TeamWebsiteLabel.text = team?.website
+        TeamAreaNameLabel.text = team?.area?.name
+        TeamFoundedLabel.text = "\(team?.founded.value ?? 1909)"
+        TeamAddress.text = team?.address ?? "Not available"
+        TeamColors.text = team?.clubColors ?? "Not available"
+        TeamPhoneLabel.text = team?.phone ?? "Not available"
+        TeamEmailLabel.text = team?.email ?? "Not available"
+        TeamWebsiteLabel.text = team?.website ?? "Not available"
+        print(team?.crestUrl)
         if(team?.crestUrl != nil){
             let data = try? Data(contentsOf: (team?.crestUrl)!)
             

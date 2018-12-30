@@ -99,7 +99,16 @@
                             <outlet property="delegate" destination="GKq-FI-BLe" id="HiN-pW-3FQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorite Teams" id="WQ0-dG-oyO"/>
+                    <navigationItem key="navigationItem" title="Favorite Teams" id="WQ0-dG-oyO">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="pwy-7U-t30">
+                            <connections>
+                                <action selector="editMode:" destination="GKq-FI-BLe" id="cm0-a6-5ZI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="FavoriteTableView" destination="L1c-Ii-nLD" id="w8k-2E-8F4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SeD-Cw-Eov" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

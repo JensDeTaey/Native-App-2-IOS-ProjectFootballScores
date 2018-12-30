@@ -10,11 +10,11 @@ import Foundation
 import RealmSwift
 import Realm
 
-class Team :  Object, Codable
+class Team :  Object, Decodable
 {
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
-    //var area: Area
+    var area: Area?
     @objc dynamic var address : String?
     @objc dynamic var phone : String?
     @objc dynamic var website : String?
@@ -44,11 +44,11 @@ class Team :  Object, Codable
         case phone
         case website
         case email
-        //case founded
+        case founded
         case crestUrl
         case clubColors
         case players = "squad"
-        //case area
+        case area
     }
 
 
@@ -72,23 +72,28 @@ class Team :  Object, Codable
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try valueContainer.decode(Int.self, forKey: CodingKeys.id)
         self.name = try valueContainer.decode(String.self, forKey: CodingKeys.name)
-        //self.area = try valueContainer.decode(Area.self, forKey: CodingKeys.area)
+        self.area?.name = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.area)
         self.address = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.address)
         self.phone = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.phone)
         self.website = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.website)
         self.email = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.email)
-        //self.founded = try valueContainer.decodeIfPresent(Int.self, forKey: CodingKeys.founded)
+        
         self.crestUrl = try valueContainer.decodeIfPresent(URL.self, forKey: CodingKeys.crestUrl)
         self.clubColors = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.clubColors)
         self.players = try valueContainer.decodeIfPresent([Player].self, forKey: CodingKeys.players)
+        
+        let founded = try valueContainer.decodeIfPresent(Int.self, forKey: CodingKeys.founded)
+        if let founded = founded {
+            self.founded.value = founded
+        }
     }
     
 }
 
-struct Teams  : Codable{
+struct Teams  : Decodable{
     let teams : [Team]
 }
 
 struct Area{
-    let name: String
+    var name: String?
 }

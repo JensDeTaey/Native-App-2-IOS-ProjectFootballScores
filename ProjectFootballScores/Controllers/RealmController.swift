@@ -31,11 +31,11 @@ class RealmController{
     }
     
     // delete a team from realm
-    func deleteTeam(team : Team,completion: @escaping (Error?) -> Void) {
+    func deleteTeam(teamToDelete : Team,completion: @escaping (Error?) -> Void) {
         do {
             let realm = try Realm()
             try realm.write {
-                realm.delete(team)
+                realm.delete(teamToDelete)
             }
             updateTeam()
         } catch let error as NSError {
