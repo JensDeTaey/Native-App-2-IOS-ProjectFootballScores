@@ -14,12 +14,16 @@ class MatchTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var HomeTeamLabel: UILabel!
+    
+    
+    @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var AwayTeamLabel: UILabel!
     
     var match: Match! {
         didSet {
             HomeTeamLabel.text = match.homeTeam.name
             AwayTeamLabel.text = match.awayTeam.name
+            ScoreLabel.text = String(match.score.fullTime.homeTeamScore) + "-" + String(match.score.fullTime.awayTeamScore) 
         }
     }
 
