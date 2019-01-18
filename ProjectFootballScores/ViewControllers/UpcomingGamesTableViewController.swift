@@ -75,8 +75,10 @@ class UpcomingGamesTableViewController: UITableViewController {
      let cell = tableView.dequeueReusableCell(withIdentifier: "UpComingMatchCell", for: indexPath) as! UpComingMatchesTableViewCell
      switch indexPath.section {
      case 0:
+     cell.status = "Finished"
      cell.match = matchesFinished[indexPath.row]
      case 1:
+     cell.status = "Scheduled"
      cell.match = matchesScheduled[indexPath.row]
      default:
      cell.match = matchesFinished[indexPath.row]
