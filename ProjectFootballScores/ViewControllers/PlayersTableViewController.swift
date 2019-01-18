@@ -118,7 +118,6 @@ class PlayersTableViewController: UITableViewController {
             cell.player = squad[indexPath.row]
         }
         
-        // Configure the cell...
         
         return cell
     }

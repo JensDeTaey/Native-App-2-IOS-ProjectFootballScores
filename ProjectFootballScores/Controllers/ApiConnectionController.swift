@@ -83,6 +83,24 @@ class ApiConncectionController{
         task.resume()
     }
     
+    // fetching all matches from favorite team
+    func fetchUpcomingMatchesWithId(teamId:Int,completion: @escaping (_ matches :[Match]?)->(Void)){
+        let url = URL(string: baseUrl + "/teams/" + String(teamId) + "/matches?status=FINISHED")
+        let request = setHTTPHeader(url: url!)
+        let task = URLSession.shared.dataTask(with: request) { (data,
+            response, error) in
+            let jsonDecoder = JSONDecoder()
+            if let data = data,
+                let matches = try? jsonDecoder.decode(Matches.self,from: data)
+            {
+                print(matches)
+                completion(matches.matches)
+            }
+        }
+        task.resume()
+    }
+   //https://api.football-data.org/v2/teams/86/matches?status=SCHEDULED
+    
     func setHTTPHeader(url : URL) -> URLRequest {
         var request = URLRequest(url: url)
         request.setValue("953751ac9efe4a63aebef35f96fdf210", forHTTPHeaderField: "X-Auth-Token")

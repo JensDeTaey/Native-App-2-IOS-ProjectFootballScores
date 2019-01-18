@@ -13,16 +13,28 @@ class RealmController{
     
     static let singletonRealm : RealmController = RealmController()
     
-    var teams :  Results<Team> = try! Realm().objects(Team.self)
-    var copyTeams : [Team] = []
+    private var teamsInRealm :  Results<Team> = try! Realm().objects(Team.self)
+    private var copyTeams : [Team] = []
+    
+    var teams:[Team]{
+        get{
+            guard teamsInRealm != nil else{return []}
+            var copiedTeams: [Team] = []
+            teamsInRealm.forEach{team in
+                copiedTeams.append(team.copy() as! Team)
+            }
+            return copiedTeams
+        }
+    }
     
     // add a team to realm
     func addTeam(team : Team,completion: @escaping (Error?) -> Void) {
         do {
             let realm = try Realm()
+            let teamCopy = team.copy() as! Team
             try realm.write {
                 team.isFavorite = true
-                realm.add(team)
+                realm.add(teamCopy)
             }
             
             
@@ -38,19 +50,18 @@ class RealmController{
     func deleteTeam(teamToDelete : Team,completion: @escaping (Error?) -> Void) {
         do {
             let realm = try Realm()
-            try realm.write {
-                teamToDelete.isFavorite = false
-                realm.delete(teamToDelete)
+            //teamToDelete.isFavorite = false
+            guard let copyTeam = teamsInRealm.first(where: {$0.id == teamToDelete.id}) else{
+                print("Could not find team with name: '\(teamToDelete.name)' in saved list in Realm")
+                return
             }
-            //updateTeam()
+            try realm.write {
+                realm.delete(copyTeam)
+            }
         } catch let error as NSError {
             completion(error)
             return
         }
         completion(nil)
-    }
-    
-    func updateTeam(){
-        teams = try! Realm().objects(Team.self)
     }
 }

@@ -9,19 +9,19 @@
 import UIKit
 
 class FavoriteTeamsTableViewController: UITableViewController {
-    var teams = RealmController.singletonRealm.teams
+    private var teams = RealmController.singletonRealm.teams
 
     @IBOutlet var FavoriteTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        RealmController.singletonRealm.updateTeam()
+        teams = RealmController.singletonRealm.teams
         self.FavoriteTableView.reloadData()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         DispatchQueue.main.async {
-                RealmController.singletonRealm.updateTeam()
+               self.teams =  RealmController.singletonRealm.teams
                 self.FavoriteTableView.reloadData()
         if (self.teams.isEmpty){
             self.tableView.setEmptyMessage("No Teams selected as favorite yet")
@@ -49,7 +49,6 @@ class FavoriteTeamsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteTeamCell", for: indexPath)
         let team = teams[indexPath.row]
         cell.textLabel?.text = team.name
-        // Configure the cell...
 
         return cell
     }
@@ -75,7 +74,6 @@ class FavoriteTeamsTableViewController: UITableViewController {
                 error in
                 
                 if error != nil {
-                    //self.showToast(message: "failed delete")
                     print("failed delete")
                 } else {
                     //There were no errors
@@ -102,7 +100,6 @@ extension UITableView {
         messageLabel.textAlignment = .center;
         messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
         messageLabel.sizeToFit()
-        
         self.backgroundView = messageLabel;
         self.separatorStyle = .none;
     }

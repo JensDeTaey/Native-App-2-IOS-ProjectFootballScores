@@ -50,23 +50,6 @@ class Team :  Object, Decodable
         case players = "squad"
         case area
     }
-
-
-    
-  /*convenience init(id: Int, name: String,area: Area, address: String, phone: String, website: String, email: String, founded: Int,crestUrl:URL, clubColors: String, players : [Player]) {
-        self.init()
-        self.id = id
-        self.name = name
-        //self.area = area
-        self.address = address
-        self.phone = phone
-        self.website = website
-        self.email = email
-        self.founded = founded
-        self.crestUrl = crestUrl
-        self.clubColors = clubColors
-        self.players = players
-    }*/
      required init(from decoder: Decoder) throws {
        super.init()
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
@@ -108,4 +91,22 @@ struct Area : Decodable{
     }
     
     
+}
+
+//copy for working with realm
+extension Team:NSCopying{
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Team()
+        copy.id = self.id
+        copy.name = self.name
+        copy.area = self.area
+        copy.address = self.address
+        copy.website = self.website
+        copy.phone = self.phone
+        copy.clubColors = self.clubColors
+        copy.crestUrl = self.crestUrl
+        copy.email = self.email
+        copy.founded = self.founded
+        return copy
+    }
 }
