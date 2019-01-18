@@ -23,7 +23,7 @@ class MatchTableViewCell: UITableViewCell {
         didSet {
             HomeTeamLabel.text = match.homeTeam.name
             AwayTeamLabel.text = match.awayTeam.name
-            ScoreLabel.text = String(match.score.fullTime.homeTeamScore) + "-" + String(match.score.fullTime.awayTeamScore) 
+            ScoreLabel.text = "\(match.score.fullTime.homeTeamScore ?? 0) -  \(match.score.fullTime.awayTeamScore ?? 0)"
         }
     }
 

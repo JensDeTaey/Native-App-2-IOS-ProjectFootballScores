@@ -215,6 +215,12 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Today's Matches" id="Hwm-rD-EFU"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="YmH-ub-8jG">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="S8W-3A-j1i" eventType="valueChanged" id="r7Y-hq-Bdj"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="MatchesTableView" destination="k3m-LU-exf" id="dU4-MY-O98"/>
                     </connections>

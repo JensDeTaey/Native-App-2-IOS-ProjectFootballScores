@@ -14,6 +14,7 @@ class RealmController{
     static let singletonRealm : RealmController = RealmController()
     
     var teams :  Results<Team> = try! Realm().objects(Team.self)
+    var copyTeams : [Team] = []
     
     // add a team to realm
     func addTeam(team : Team,completion: @escaping (Error?) -> Void) {

@@ -34,10 +34,6 @@ class TeamCell : UITableViewCell {
         
         FavoriteButton.tintColor = UIColor.gray
         
-        
-        
-        //accessoryView = FavoriteButton
-        
     }
     
    

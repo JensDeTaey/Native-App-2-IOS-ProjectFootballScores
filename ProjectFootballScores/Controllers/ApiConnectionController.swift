@@ -76,6 +76,7 @@ class ApiConncectionController{
                 let matches = try? jsonDecoder.decode(Matches.self,from: data)
                 
             {
+                print(matches)
                 completion(matches.matches)
             }
         }

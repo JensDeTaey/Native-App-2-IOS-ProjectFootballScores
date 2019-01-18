@@ -8,7 +8,7 @@
 
 import Foundation
 struct Score : Decodable{
-    var winner : String
+    var winner : String?
     var fullTime : FullTime
     
     enum CodingKeys: String, CodingKey {
@@ -19,14 +19,14 @@ struct Score : Decodable{
     
     init(from decoder: Decoder) throws {
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
-        self.winner = try valueContainer.decode(String.self, forKey: CodingKeys.winner)
+        self.winner = try? valueContainer.decode(String.self, forKey: CodingKeys.winner)
         self.fullTime = try valueContainer.decode(FullTime.self, forKey: CodingKeys.fullTime)
     }
 }
 
 struct FullTime : Decodable{
-    var homeTeamScore : Int
-    var awayTeamScore : Int
+    var homeTeamScore : Int?
+    var awayTeamScore : Int?
     
     enum CodingKeys: String, CodingKey {
         case homeTeamScore = "homeTeam"
@@ -35,7 +35,7 @@ struct FullTime : Decodable{
     
     init(from decoder: Decoder) throws {
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
-        self.homeTeamScore = try valueContainer.decode(Int.self, forKey: CodingKeys.homeTeamScore)
-        self.awayTeamScore = try valueContainer.decode(Int.self, forKey: CodingKeys.awayTeamScore)
+        self.homeTeamScore = try? valueContainer.decode(Int.self, forKey: CodingKeys.homeTeamScore)
+        self.awayTeamScore = try? valueContainer.decode(Int.self, forKey: CodingKeys.awayTeamScore)
     }
 }
