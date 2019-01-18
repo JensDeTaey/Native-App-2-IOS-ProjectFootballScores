@@ -86,8 +86,24 @@ class FavoriteTeamsTableViewController: UITableViewController {
     }
     
     //Excerpt From: Apple Education. “App Development with Swift”. Apple Inc. - Education, 2017. Apple Books. https://itunes.apple.com/be/book/app-development-with-swift/id1219117996?mt=11
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let team = self.teams[indexPath.row] as? Team{
+            self.performSegue(withIdentifier: "toUpcomingGames", sender: team.id)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toUpcomingGames"{
+            if let des = segue.destination as? UpcomingGamesTableViewController{
+                des.teamId = (sender as? Int)!
+            }
+        }
+    }
 
 }
+
+
 
 // extension for a tableview to show message when the tableview is empty
 extension UITableView {

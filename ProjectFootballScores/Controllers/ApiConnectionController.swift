@@ -74,17 +74,15 @@ class ApiConncectionController{
             let jsonDecoder = JSONDecoder()
             if let data = data,
                 let matches = try? jsonDecoder.decode(Matches.self,from: data)
-                
             {
-                print(matches)
                 completion(matches.matches)
             }
         }
         task.resume()
     }
     
-    // fetching all matches from favorite team
-    func fetchUpcomingMatchesWithId(teamId:Int,completion: @escaping (_ matches :[Match]?)->(Void)){
+    // fetching all matches from favorite team that are finished
+    func fetchUpcomingMatchesFinishedWithId(teamId:Int,completion: @escaping (_ matches :[Match]?)->(Void)){
         let url = URL(string: baseUrl + "/teams/" + String(teamId) + "/matches?status=FINISHED")
         let request = setHTTPHeader(url: url!)
         let task = URLSession.shared.dataTask(with: request) { (data,
@@ -93,7 +91,22 @@ class ApiConncectionController{
             if let data = data,
                 let matches = try? jsonDecoder.decode(Matches.self,from: data)
             {
-                print(matches)
+                completion(matches.matches)
+            }
+        }
+        task.resume()
+    }
+    
+    // fetching all matches from favorite team that are finished
+    func fetchUpcomingMatchesScheduledWithId(teamId:Int,completion: @escaping (_ matches :[Match]?)->(Void)){
+        let url = URL(string: baseUrl + "/teams/" + String(teamId) + "/matches?status=SCHEDULED")
+        let request = setHTTPHeader(url: url!)
+        let task = URLSession.shared.dataTask(with: request) { (data,
+            response, error) in
+            let jsonDecoder = JSONDecoder()
+            if let data = data,
+                let matches = try? jsonDecoder.decode(Matches.self,from: data)
+            {
                 completion(matches.matches)
             }
         }

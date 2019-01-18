@@ -108,7 +108,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="FavoriteTableView" destination="L1c-Ii-nLD" id="w8k-2E-8F4"/>
-                        <segue destination="kXh-Ix-raI" kind="push" id="pwY-Zr-xZP"/>
+                        <segue destination="kXh-Ix-raI" kind="push" identifier="toUpcomingGames" id="pwY-Zr-xZP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SeD-Cw-Eov" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -118,14 +118,14 @@
         <!--Upcoming matches-->
         <scene sceneID="4YS-TL-hcB">
             <objects>
-                <tableViewController id="kXh-Ix-raI" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tys-fb-fuB">
+                <tableViewController id="kXh-Ix-raI" customClass="UpcomingGamesTableViewController" customModule="ProjectFootballScores" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="tys-fb-fuB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xjA-Mj-BvR">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xjA-Mj-BvR" id="d5N-ei-Aea">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -139,6 +139,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Upcoming matches" id="ueO-NN-cBB"/>
+                    <connections>
+                        <outlet property="upcomingGamesTableView" destination="tys-fb-fuB" id="E9E-qn-HaI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5d4-Oa-BCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
