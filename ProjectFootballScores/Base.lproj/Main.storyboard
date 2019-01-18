@@ -124,13 +124,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xjA-Mj-BvR">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UpComingMatchCell" id="xjA-Mj-BvR" customClass="UpComingMatchesTableViewCell" customModule="ProjectFootballScores" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xjA-Mj-BvR" id="d5N-ei-Aea">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xjA-Mj-BvR" id="d5N-ei-Aea" customClass="UpComingMatchesTableViewCell" customModule="ProjectFootballScores" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="s14-1R-cm4">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chelsea" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6y-VW-6lh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="118.5" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0-0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONo-Jb-575">
+                                                    <rect key="frame" x="174" y="0.0" width="27" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zejeezjkfezjfz" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxz-Jt-s8C">
+                                                    <rect key="frame" x="256.5" y="0.0" width="118.5" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ONo-Jb-575" firstAttribute="centerY" secondItem="s14-1R-cm4" secondAttribute="centerY" id="CzL-f0-Ed4"/>
+                                                <constraint firstItem="ONo-Jb-575" firstAttribute="centerX" secondItem="s14-1R-cm4" secondAttribute="centerX" id="Qy2-LD-DiB"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="s14-1R-cm4" firstAttribute="top" secondItem="d5N-ei-Aea" secondAttribute="top" id="tW2-kW-0pu"/>
+                                        <constraint firstAttribute="bottom" secondItem="s14-1R-cm4" secondAttribute="bottom" id="trb-as-H3r"/>
+                                        <constraint firstItem="s14-1R-cm4" firstAttribute="leading" secondItem="d5N-ei-Aea" secondAttribute="leading" id="wfE-HG-G18"/>
+                                        <constraint firstAttribute="trailing" secondItem="s14-1R-cm4" secondAttribute="trailing" id="xUh-8y-aLs"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="awayTeamLabel" destination="mxz-Jt-s8C" id="FxU-kO-GeQ"/>
+                                    <outlet property="homeTeamLabel" destination="y6y-VW-6lh" id="vWp-Ca-BHN"/>
+                                    <outlet property="middleLabel" destination="ONo-Jb-575" id="16p-xa-Bld"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -145,7 +185,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5d4-Oa-BCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2466" y="949"/>
+            <point key="canvasLocation" x="2449" y="956"/>
         </scene>
         <!--Today's Matches-->
         <scene sceneID="5k0-PN-jLL">
