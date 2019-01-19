@@ -106,7 +106,7 @@ extension Team:NSCopying{
         copy.clubColors = self.clubColors
         copy.crestUrl = self.crestUrl
         copy.email = self.email
-        copy.founded = self.founded
+        copy.founded = RealmOptional(self.founded.value)
         return copy
     }
 }

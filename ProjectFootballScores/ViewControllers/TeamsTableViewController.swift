@@ -32,12 +32,9 @@ class TeamsTableViewController: UITableViewController {
                 
                 }
             }
-            
-            //teamTableView.register(TeamCell.self, forCellReuseIdentifier: "cellId")
+
         }
-        // Do any additional setup after loading the view.
-    
-    // MARK: - Table view data source
+
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

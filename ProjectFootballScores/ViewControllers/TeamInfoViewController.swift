@@ -38,18 +38,27 @@ class TeamInfoViewController: UIViewController {
         TeamPhoneLabel.text = team?.phone ?? "Not available"
         TeamEmailLabel.text = team?.email ?? "Not available"
         TeamWebsiteLabel.text = team?.website ?? "Not available"
-        print(team?.crestUrl)
-        if team?.crestUrl != nil || team?.area?.name != "France"{
-            let data = try! Data(contentsOf: (team?.crestUrl)!)
-            if SVGKImage(data: data) != nil {
-                let anSVGImage: SVGKImage = SVGKImage(data: data)
-                TeamLogoImage.image = anSVGImage.uiImage
-            }else{
-                TeamLogoImage.isHidden = true
-            }
+        
+        
+            if team?.crestUrl != nil {
+                let data = try? Data(contentsOf: (team?.crestUrl)!)
+                if data != nil{
+                    if team?.crestUrl?.pathExtension == "svg"{
+                        if SVGKImage(data: data) != nil {
+                            let anSVGImage: SVGKImage = SVGKImage(data: data)
+                            TeamLogoImage.image = anSVGImage.uiImage
+                        }else{
+                            TeamLogoImage.isHidden = true
+                        }
+                    }else{
+                        TeamLogoImage.image  = UIImage(data : data!)
+                    }
+                }
         }else{
             TeamLogoImage.isHidden = true
         }
+            
+        
     }
     
 

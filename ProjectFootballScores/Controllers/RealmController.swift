@@ -50,7 +50,7 @@ class RealmController{
     func deleteTeam(teamToDelete : Team,completion: @escaping (Error?) -> Void) {
         do {
             let realm = try Realm()
-            //teamToDelete.isFavorite = false
+            teamToDelete.isFavorite = false
             guard let copyTeam = teamsInRealm.first(where: {$0.id == teamToDelete.id}) else{
                 print("Could not find team with name: '\(teamToDelete.name)' in saved list in Realm")
                 return
