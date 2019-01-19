@@ -14,7 +14,7 @@ class UpcomingGamesTableViewController: UITableViewController {
     private var matchesFinished = [Match]()
     var teamId : Int = 0
 
-    @IBOutlet var upcomingGamesTableView: UITableView!
+    @IBOutlet var upComingGamesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.matchesFinished = []
@@ -25,7 +25,7 @@ class UpcomingGamesTableViewController: UITableViewController {
             if let matches = matches {
                 DispatchQueue.main.async {
                     self.matchesScheduled = matches
-                    self.upcomingGamesTableView.reloadData()
+                    self.upComingGamesTableView.reloadData()
                 }
             }
         }
@@ -34,7 +34,7 @@ class UpcomingGamesTableViewController: UITableViewController {
             if let matches = matches {
                 DispatchQueue.main.async {
                     self.matchesFinished = matches
-                    self.upcomingGamesTableView.reloadData()
+                    self.upComingGamesTableView.reloadData()
                 }
             }
         }
@@ -75,10 +75,8 @@ class UpcomingGamesTableViewController: UITableViewController {
      let cell = tableView.dequeueReusableCell(withIdentifier: "UpComingMatchCell", for: indexPath) as! UpComingMatchesTableViewCell
      switch indexPath.section {
      case 0:
-     cell.status = "Finished"
      cell.match = matchesFinished[indexPath.row]
      case 1:
-     cell.status = "Scheduled"
      cell.match = matchesScheduled[indexPath.row]
      default:
      cell.match = matchesFinished[indexPath.row]
