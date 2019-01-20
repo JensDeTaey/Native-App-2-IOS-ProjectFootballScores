@@ -35,7 +35,6 @@ class UpComingMatchesTableViewCell: UITableViewCell {
                 awayTeamScore.isHidden = true
                 homeTeamScore.isHidden = true
                 dateLabel.text = String(format: "%02d/%02d %02d:%02d",comp.day!,comp.month!, comp.hour!, comp.minute!)
-                
             }
         }
     }

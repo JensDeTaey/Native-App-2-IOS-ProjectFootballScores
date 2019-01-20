@@ -16,7 +16,7 @@ class MatchesTableViewController: UITableViewController {
     @IBOutlet var MatchesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        matches.self = []
+        self.matches = []
         self.matchesInSections = [[Match](), [Match](), [Match](),[Match](),[Match](),[Match](),[Match](),[Match](),[Match](),[Match](),[Match](),[Match]()]
         
         
@@ -77,7 +77,9 @@ class MatchesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = MatchesTableView.dequeueReusableCell(withIdentifier: "MatchCell", for: indexPath) as! MatchTableViewCell
-        cell.match = matchesInSections[indexPath.section][indexPath.row] as! Match
+        print(indexPath.section)
+        print(indexPath.row)
+        cell.match = matchesInSections[indexPath.section][indexPath.row]
         return cell
     }
     
@@ -103,12 +105,12 @@ class MatchesTableViewController: UITableViewController {
     }
     
     @IBAction func refresh(_ sender: Any) {
-        matches.self = []
-        self.matchesInSections = [[Match](), [Match](), [Match](),[Match](),[Match](),[Match](),[Match](),[Match](),[Match](),[Match](),[Match](),[Match]()]
         let connection :ApiConncectionController = ApiConncectionController()
         connection.fetchCurrentMatches { matches in
             if let matches = matches {
                 DispatchQueue.main.async {
+                    self.matches = []
+                    self.matchesInSections = [[Match](), [Match](), [Match](),[Match](),[Match](),[Match](),[Match](),[Match](),[Match](),[Match](),[Match](),[Match]()]
                     self.matches = matches
                     self.DivideMatchInCompetition()
                     self.MatchesTableView.reloadData()
