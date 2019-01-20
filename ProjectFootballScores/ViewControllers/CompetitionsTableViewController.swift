@@ -59,7 +59,6 @@ class CompetitionsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let competition = self.competitions[indexPath.row] as? Competition{
-            print(competition)
             self.performSegue(withIdentifier: "SelectCompetition", sender: competition)
         }
     }

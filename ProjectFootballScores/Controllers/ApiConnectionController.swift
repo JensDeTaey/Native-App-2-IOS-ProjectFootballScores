@@ -33,18 +33,13 @@ class ApiConncectionController{
     
     func fetchTeams(competitonId:Int,completion: @escaping (_ teams :[Team]?)->(Void)){
         let url = URL(string: baseUrl + "/competitions/" + String(competitonId) + "/teams")!
-        print(url)
         let request = setHTTPHeader(url: url)
         let task = URLSession.shared.dataTask(with: request) { (data,
             response, error) in
             let jsonDecoder = JSONDecoder()
             if let data = data,
-                let teams = try? jsonDecoder.decode(Teams.self,from: data),let string = String(data: data, encoding: .utf8)
-                
+                let teams = try? jsonDecoder.decode(Teams.self,from: data)
             {
-                print(teams)
-                print(data)
-                print(string)
                 completion(teams.teams)
             }
         }

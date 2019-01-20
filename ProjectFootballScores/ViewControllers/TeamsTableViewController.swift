@@ -23,9 +23,7 @@ class TeamsTableViewController: UITableViewController {
         { teams in
             if let teams = teams {
                 DispatchQueue.main.async {
-                    
                     self.teams = teams
-                    print("oproeping van resetStarts")
                     self.resetStars()
                     self.teamTableView.reloadData()
                     }
@@ -55,7 +53,6 @@ class TeamsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let team = self.teams[indexPath.row] as? Team{
-            print(team)
             self.performSegue(withIdentifier: "SelectTeam", sender: team)
         }
     }
