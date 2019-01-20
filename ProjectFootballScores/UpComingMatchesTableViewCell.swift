@@ -11,9 +11,11 @@ import UIKit
 class UpComingMatchesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var homeTeamLabel: UILabel!
-    @IBOutlet weak var middleLabel: UILabel!
     @IBOutlet weak var awayTeamLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var awayTeamScore: UILabel!
+    @IBOutlet weak var homeTeamScore: UILabel!
     var match: Match! {
         didSet {
             homeTeamLabel.text = match.homeTeam.name
@@ -27,13 +29,17 @@ class UpComingMatchesTableViewCell: UITableViewCell {
             let comp = calendar.dateComponents([.day,.month,.hour, .minute], from: date!)
             let hour = comp.hour
             let minute = comp.minute
-            print(date)
-            print(hour)
-            print(minute)
             if(match.status == "FINISHED"){
-                middleLabel.text = "\(match.score.fullTime.homeTeamScore ?? 0) -  \(match.score.fullTime.awayTeamScore ?? 0)"
+                awayTeamScore.isHidden = false
+                homeTeamScore.isHidden = false
+                awayTeamScore.text = String(match.score.fullTime.awayTeamScore!)
+                homeTeamScore.text = String(match.score.fullTime.homeTeamScore!)
+                dateLabel.text = String(comp.day!) + "/" +  String(comp.month!)
             }else{
-                middleLabel.text = "\(comp.day ?? 0)/\(comp.month ?? 0) \(hour ?? 00):\(minute ?? 00)"
+                awayTeamScore.isHidden = true
+                homeTeamScore.isHidden = true
+                dateLabel.text = String(comp.day!) + "/" +  String(comp.month!) + " " +  String(hour!) + ":" + String(minute!)
+               // middleLabel.text = "\(comp.day ?? 0)/\(comp.month ?? 0) \(hour ?? 00):\(minute ?? 00)"
             }
         }
     }
