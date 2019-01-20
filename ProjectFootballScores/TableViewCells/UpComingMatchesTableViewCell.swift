@@ -20,8 +20,6 @@ class UpComingMatchesTableViewCell: UITableViewCell {
         didSet {
             homeTeamLabel.text = match.homeTeam.name
             awayTeamLabel.text = match.awayTeam.name
-            print(match.status)
-            print(match.utcDate)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
             let date = dateFormatter.date(from: match.utcDate)
