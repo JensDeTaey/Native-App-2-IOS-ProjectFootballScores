@@ -25,7 +25,8 @@ class TeamInfoViewController: UIViewController {
     @IBOutlet weak var TeamAddress: UILabel!
     @IBOutlet weak var TeamPhoneLabel: UILabel!
     @IBOutlet weak var TeamEmailLabel: UILabel!
-    @IBOutlet weak var TeamWebsiteLabel: UILabel!
+    
+    @IBOutlet weak var TeamWebsiteButton: UIButton!
     @IBOutlet weak var PlayerButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class TeamInfoViewController: UIViewController {
         TeamColors.text = team?.clubColors ?? "Not available"
         TeamPhoneLabel.text = team?.phone ?? "Not available"
         TeamEmailLabel.text = team?.email ?? "Not available"
-        TeamWebsiteLabel.text = team?.website ?? "Not available"
+        TeamWebsiteButton.setTitle(team?.website ?? "Not available", for: .normal)
         
         
             if team?.crestUrl != nil {
@@ -75,4 +76,14 @@ class TeamInfoViewController: UIViewController {
     @IBAction func SeeAllPlayersPushed(_ sender: Any) {
         self.performSegue(withIdentifier: "SelectAllPlayers", sender: team?.id)
     }
+    
+    @IBAction func LinkPushed(_ sender: Any) {
+        if team?.website != nil || team?.website == ""{
+            if let url = NSURL(string:(team?.website)!){
+                UIApplication.shared.open(url as URL,options: [:])
+            }
+        }
+        
+    }
+    
 }
