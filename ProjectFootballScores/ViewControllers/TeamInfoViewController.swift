@@ -13,11 +13,7 @@ import RealmSwift
 class TeamInfoViewController: UIViewController {
 
     var team : Team?
-    
-    
     @IBOutlet weak var TeamNameLabel: UILabel!
-    
-    
     @IBOutlet weak var TeamLogoImage: UIImageView!
     @IBOutlet weak var TeamAreaNameLabel: UILabel!
     @IBOutlet weak var TeamFoundedLabel: UILabel!
@@ -31,7 +27,6 @@ class TeamInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         TeamNameLabel.text = team?.name
-        print(team?.area?.name)
         TeamAreaNameLabel.text = team?.area?.name
         TeamFoundedLabel.text = "\(team?.founded.value ?? 1909)"
         TeamAddress.text = team?.address ?? "Not available"
@@ -40,11 +35,14 @@ class TeamInfoViewController: UIViewController {
         TeamEmailLabel.text = team?.email ?? "Not available"
         TeamWebsiteButton.setTitle(team?.website ?? "Not available", for: .normal)
         
-        
+            // check if the url is not null
             if team?.crestUrl != nil {
                 let data = try? Data(contentsOf: (team?.crestUrl)!)
+                //check if the data is not null
                 if data != nil{
+                    //not all extensions are .svg and need to be processed differently
                     if team?.crestUrl?.pathExtension == "svg"{
+                        //another check if the data can be converted to an image
                         if SVGKImage(data: data) != nil {
                             let anSVGImage: SVGKImage = SVGKImage(data: data)
                             TeamLogoImage.image = anSVGImage.uiImage
@@ -58,16 +56,11 @@ class TeamInfoViewController: UIViewController {
         }else{
             TeamLogoImage.isHidden = true
         }
-            
-        
     }
-    
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectAllPlayers"{
             if let des = segue.destination as? PlayersTableViewController{
-                //let team = teamTableView.indexPathForSelectedRow?.row
                 des.teamId = sender as? Int
             }
         }
@@ -77,13 +70,12 @@ class TeamInfoViewController: UIViewController {
         self.performSegue(withIdentifier: "SelectAllPlayers", sender: team?.id)
     }
     
+    //function when link website is pushed that opens it.
     @IBAction func LinkPushed(_ sender: Any) {
         if team?.website != nil || team?.website == ""{
             if let url = NSURL(string:(team?.website)!){
                 UIApplication.shared.open(url as URL,options: [:])
             }
         }
-        
     }
-    
 }

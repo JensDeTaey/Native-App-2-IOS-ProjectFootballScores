@@ -12,6 +12,8 @@ class CompetitionsTableViewController: UITableViewController {
 
     @IBOutlet var competitionTableView: UITableView!
     var competitions = [Competition]()
+    
+    // list of ids that i can use of the competitions
     let ids = [2000,2001,2002,2003,2013,2014,2015,2016,2017,2018,2019,2021]
     
     override func viewDidLoad() {
@@ -22,22 +24,19 @@ class CompetitionsTableViewController: UITableViewController {
         connection.fetchCompetitions { competitions in
             if let competitions = competitions {
                 DispatchQueue.main.async {
+                    // Filter the competitions that i can use through all of them
                     competitions.forEach({ (anycompetition : Competition) in
                         self.ids.forEach({ (id : Int) in
                             if(anycompetition.id == id){
                                 competitionsInUse.append(anycompetition)
                             }
                         })
-                        
                     })
                     self.competitions = competitionsInUse
                     self.competitionTableView.reloadData()
                 }
             }
-            
-            
         }
-        // Do any additional setup after loading the view.
     }
 
     
@@ -52,8 +51,6 @@ class CompetitionsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = competitionTableView.dequeueReusableCell(withIdentifier: "competitionCell", for: indexPath) as! CompetitionCell
         cell.competiton = competitions[indexPath.row]
-        
-        //cell.textLabel?.text = competitions[indexPath.row].name
         return cell
     }
     
@@ -67,12 +64,9 @@ class CompetitionsTableViewController: UITableViewController {
         if segue.identifier == "SelectCompetition"{
             if let comp = segue.destination as? TeamsTableViewController{
                 let index = competitionTableView.indexPathForSelectedRow?.row
+                //set competition that is selected
                 comp.competition = competitions[index!]
             }
         }
-        
-        
-        
     }
-
 }

@@ -27,19 +27,17 @@ class UpComingMatchesTableViewCell: UITableViewCell {
             let date = dateFormatter.date(from: match.utcDate)
             let calendar = Calendar.current
             let comp = calendar.dateComponents([.day,.month,.hour, .minute], from: date!)
-            let hour = comp.hour
-            let minute = comp.minute
             if(match.status == "FINISHED"){
                 awayTeamScore.isHidden = false
                 homeTeamScore.isHidden = false
                 awayTeamScore.text = String(match.score.fullTime.awayTeamScore!)
                 homeTeamScore.text = String(match.score.fullTime.homeTeamScore!)
-                dateLabel.text = String(comp.day!) + "/" +  String(comp.month!)
+                dateLabel.text = String(format: "%02d/%02d",comp.day!,comp.month!)
             }else{
                 awayTeamScore.isHidden = true
                 homeTeamScore.isHidden = true
-                dateLabel.text = String(comp.day!) + "/" +  String(comp.month!) + " " +  String(hour!) + ":" + String(minute!)
-               // middleLabel.text = "\(comp.day ?? 0)/\(comp.month ?? 0) \(hour ?? 00):\(minute ?? 00)"
+                dateLabel.text = String(format: "%02d/%02d %02d:%02d",comp.day!,comp.month!, comp.hour!, comp.minute!)
+                
             }
         }
     }

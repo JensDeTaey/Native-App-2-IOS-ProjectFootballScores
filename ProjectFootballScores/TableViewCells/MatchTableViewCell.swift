@@ -25,14 +25,14 @@ class MatchTableViewCell: UITableViewCell {
             AwayTeamLabel.text = match.awayTeam.name
             HomeTeamScoreLabel.text = String(match.score.fullTime.homeTeamScore ?? 0)
             AwayTeamScoreLabel.text = String(match.score.fullTime.awayTeamScore ?? 0)
+            
+            //set the date in string to a date datatype
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
             let date = dateFormatter.date(from: match.utcDate)
             let calendar = Calendar.current
             let comp = calendar.dateComponents([.hour, .minute], from: date!)
-            let hour = comp.hour
-            let minute = comp.minute
-            TimeLabel.text = String(hour!) + ":" + String(minute!)
+            TimeLabel.text = String(format: "%02d:%02d", comp.hour!, comp.minute!)
         }
     }
 

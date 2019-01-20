@@ -15,6 +15,7 @@ class TeamCell : UITableViewCell {
     var team: Team! {
         didSet {
             teamNameLabel.text = team.name;
+            //set the right colour of the image button
             if(team.isFavorite){
                 FavoriteButton.tintColor = UIColor.yellow
             }else{
@@ -28,18 +29,18 @@ class TeamCell : UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        //set the image of the button
         let origImage = UIImage(named: "star_fav");
         let tintedImage = origImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         FavoriteButton.setImage(tintedImage, for: .normal)
         
         FavoriteButton.tintColor = UIColor.gray
-        
     }
     
    
     
     @IBAction func FavoritePushed(_ sender: Any) {
-        print(team.name)
+        //checking if team is already saved
         if(team.isFavorite == false){
             RealmController.singletonRealm.addTeam(team: team)
             {
@@ -64,9 +65,6 @@ class TeamCell : UITableViewCell {
             }
         }
     }
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
+    
 }
 

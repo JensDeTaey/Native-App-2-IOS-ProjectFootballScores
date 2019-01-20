@@ -35,10 +35,10 @@ class MatchesTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 12
     }
     
+    //setting all the names of the available competitions
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -71,7 +71,6 @@ class MatchesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return matchesInSections[section].count
     }
 
@@ -114,7 +113,6 @@ class MatchesTableViewController: UITableViewController {
                     self.DivideMatchInCompetition()
                     self.MatchesTableView.reloadData()
                     self.refreshControl?.endRefreshing()
-                    
                 }
             }
         }

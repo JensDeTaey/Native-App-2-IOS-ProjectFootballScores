@@ -13,24 +13,24 @@ class ApiConncectionController{
     
     let baseUrl = "https://api.football-data.org/v2"
     
+    //fetch all the competitions
     func fetchCompetitions(completion: @escaping (_ competitions :[Competition]?)->(Void)){
         let url =  URL(string: baseUrl + "/competitions")!
         let request = setHTTPHeader(url: url)
         let task = URLSession.shared.dataTask(with: request) { (data,
             response, error) in
             let jsonDecoder = JSONDecoder()
-            
             if let data = data,
                 let competitions = try? jsonDecoder.decode(Competitions.self,from: data)
             {
                 completion(competitions.competitions)
             }
-            
         }
         task.resume()
         
     }
     
+    //fetch teams with id of the competitions
     func fetchTeams(competitonId:Int,completion: @escaping (_ teams :[Team]?)->(Void)){
         let url = URL(string: baseUrl + "/competitions/" + String(competitonId) + "/teams")!
         let request = setHTTPHeader(url: url)
@@ -46,6 +46,7 @@ class ApiConncectionController{
         task.resume()
     }
     
+    //fetch a single team with their id
     func fetchTeamWithPlayers(teamId:Int,completion: @escaping (_ team :Team?)->(Void)){
         let url = URL(string: baseUrl + "/teams/" + String(teamId))!
         let request = setHTTPHeader(url: url)
@@ -92,7 +93,7 @@ class ApiConncectionController{
         task.resume()
     }
     
-    // fetching all matches from favorite team that are finished
+    // fetching all matches from favorite team that are scheduled
     func fetchUpcomingMatchesScheduledWithId(teamId:Int,completion: @escaping (_ matches :[Match]?)->(Void)){
         let url = URL(string: baseUrl + "/teams/" + String(teamId) + "/matches?status=SCHEDULED")
         let request = setHTTPHeader(url: url!)
@@ -107,7 +108,6 @@ class ApiConncectionController{
         }
         task.resume()
     }
-   //https://api.football-data.org/v2/teams/86/matches?status=SCHEDULED
     
     func setHTTPHeader(url : URL) -> URLRequest {
         var request = URLRequest(url: url)
@@ -115,8 +115,5 @@ class ApiConncectionController{
         request.httpMethod = "GET"
         return request
     }
-    
-    
-    
     
 }

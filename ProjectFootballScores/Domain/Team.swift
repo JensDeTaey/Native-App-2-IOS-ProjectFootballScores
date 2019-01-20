@@ -60,11 +60,9 @@ class Team :  Object, Decodable
         self.phone = try? valueContainer.decode(String.self, forKey: CodingKeys.phone)
         self.website = try? valueContainer.decode(String.self, forKey: CodingKeys.website)
         self.email = try? valueContainer.decode(String.self, forKey: CodingKeys.email)
-        
         self.crestUrl = try? valueContainer.decode(URL.self, forKey: CodingKeys.crestUrl)
         self.clubColors = try? valueContainer.decode(String.self, forKey: CodingKeys.clubColors)
         self.players = try? valueContainer.decode([Player].self, forKey: CodingKeys.players)
-        
         let founded = try? valueContainer.decode(Int.self, forKey: CodingKeys.founded)
         if let founded = founded {
             self.founded.value = founded
@@ -75,22 +73,6 @@ class Team :  Object, Decodable
 
 struct Teams  : Decodable{
     let teams : [Team]
-}
-
-struct Area : Decodable{
-    var name: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        
-    }
-    
-     init(from decoder: Decoder) throws {
-        let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
-        self.name = try valueContainer.decode(String.self, forKey: CodingKeys.name)
-    }
-    
-    
 }
 
 //copy for working with realm

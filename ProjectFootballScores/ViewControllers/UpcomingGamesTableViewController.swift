@@ -40,15 +40,12 @@ class UpcomingGamesTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         switch section {
         case 0:
             return matchesFinished.count
@@ -73,16 +70,12 @@ class UpcomingGamesTableViewController: UITableViewController {
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "UpComingMatchCell", for: indexPath) as! UpComingMatchesTableViewCell
-     switch indexPath.section {
-     case 0:
-     cell.match = matchesFinished[indexPath.row]
-     case 1:
-     cell.match = matchesScheduled[indexPath.row]
-     default:
-     cell.match = matchesFinished[indexPath.row]
-     }
+        if indexPath.section == 0{
+            cell.match = matchesFinished[indexPath.row]
+        }else{
+            cell.match = matchesScheduled[indexPath.row]
+        }
      return cell
      }
     
-
 }

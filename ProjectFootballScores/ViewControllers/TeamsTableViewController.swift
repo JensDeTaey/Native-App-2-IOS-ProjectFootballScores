@@ -27,10 +27,8 @@ class TeamsTableViewController: UITableViewController {
                     self.resetStars()
                     self.teamTableView.reloadData()
                     }
-                
                 }
             }
-
         }
 
 
@@ -46,8 +44,6 @@ class TeamsTableViewController: UITableViewController {
         let cell = teamTableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
         
         cell.team = teams[indexPath.row]
-        
-        //cell.textLabel?.text = teams[indexPath.row].name
         return cell
     }
     
@@ -60,11 +56,13 @@ class TeamsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectTeam"{
             if let des = segue.destination as? TeamInfoViewController{
+                //set the selected team in the next viewController
                 des.team = sender as? Team
             }
         }
     }
    
+    //function to set the favorite teams from realm in the list of teams from a certain competition
     func resetStars(){
         let teamsSaved = RealmController.singletonRealm.teams
         teams.forEach { (team : Team) in
@@ -73,7 +71,6 @@ class TeamsTableViewController: UITableViewController {
                     team.isFavorite = true
                 }
             })
-            
         }
     }
     

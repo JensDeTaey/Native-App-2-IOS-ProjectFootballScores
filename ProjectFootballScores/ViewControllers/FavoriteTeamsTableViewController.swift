@@ -16,13 +16,14 @@ class FavoriteTeamsTableViewController: UITableViewController {
         super.viewDidLoad()
         teams = RealmController.singletonRealm.teams
         self.FavoriteTableView.reloadData()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         DispatchQueue.main.async {
-               self.teams =  RealmController.singletonRealm.teams
-                self.FavoriteTableView.reloadData()
+        self.teams =  RealmController.singletonRealm.teams
+        self.FavoriteTableView.reloadData()
+           
+        //checking if list in realm is empty.
         if (self.teams.isEmpty){
             self.tableView.setEmptyMessage("No Teams selected as favorite yet")
         }else{
@@ -31,28 +32,24 @@ class FavoriteTeamsTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //load teams again, if one gets removed
         self.teams =  RealmController.singletonRealm.teams
         return teams.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteTeamCell", for: indexPath)
-        let team = teams[indexPath.row]
-        cell.textLabel?.text = team.name
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteTeamCell", for: indexPath) as! FavoriteTeamTableViewCell
+        cell.team = teams[indexPath.row]
         return cell
     }
     
+    //make delete of a row possible
     override func tableView(_ tableView: UITableView,
                                editingStyleForRowAt indexPath: IndexPath) ->
         UITableViewCell.EditingStyle {
@@ -65,14 +62,17 @@ class FavoriteTeamsTableViewController: UITableViewController {
     @IBAction func editMode(_ sender: Any) {
         self.FavoriteTableView.isEditing = !self.FavoriteTableView.isEditing
     }
+    
+    //function for removing a team from realm
     override func tableView(_ tableView: UITableView, commit
         editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath:
         IndexPath) {
-        if editingStyle == .delete {
+        if editingStyle == .delete
+        {
             let team  = teams[indexPath.row]
-            RealmController.singletonRealm.deleteTeam(teamToDelete: team){
+            RealmController.singletonRealm.deleteTeam(teamToDelete: team)
+            {
                 error in
-                
                 if error != nil {
                     print("failed delete")
                 } else {
@@ -80,30 +80,30 @@ class FavoriteTeamsTableViewController: UITableViewController {
                     tableView.deleteRows(at: [indexPath], with: . automatic)
                     print("succes delete")
                 }
-            
+            }
         }
-    }
     }
     
     //Excerpt From: Apple Education. “App Development with Swift”. Apple Inc. - Education, 2017. Apple Books. https://itunes.apple.com/be/book/app-development-with-swift/id1219117996?mt=11
     
+    //function if a team get selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let team = self.teams[indexPath.row] as? Team{
             self.performSegue(withIdentifier: "toUpcomingGames", sender: team.id)
         }
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toUpcomingGames"{
             if let des = segue.destination as? UpcomingGamesTableViewController{
+                //set the id of the team that is selected
                 des.teamId = (sender as? Int)!
             }
         }
     }
 
 }
-
-
 
 // extension for a tableview to show message when the tableview is empty
 extension UITableView {
